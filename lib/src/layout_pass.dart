@@ -1,4 +1,5 @@
 import "package:collection/collection.dart";
+import "package:flutter/foundation.dart";
 import "package:flutter/rendering.dart";
 
 import "render_object.dart";
@@ -54,7 +55,7 @@ final _viewportToLayoutPass = Expando<LayoutPass>();
 
 extension RenderSliverLayoutPass on RenderSliver {
   RenderViewport? getViewport() {
-    RenderObject? parent = this.parent;
+    var parent = this.parent;
     while (parent != null) {
       if (parent is RenderViewport) {
         return parent;
