@@ -457,8 +457,10 @@ class RenderSuperSliverList extends RenderSliverMultiBoxAdaptor
     // throw exception. To work around this force layout if there is scroll
     // offset correction requested.
     if (geometry?.scrollOffsetCorrection != null &&
-        geometry?.scrollOffsetCorrection != 0) {
-      parent?.invokeLayoutCallback((constraints) {
+        geometry?.scrollOffsetCorrection != 0 &&
+        parent != null &&
+        parent is RenderObject) {
+      (parent as RenderObject).invokeLayoutCallback((constraints) {
         markNeedsLayout();
       });
     }
